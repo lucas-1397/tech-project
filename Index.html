@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索宇宙 - 響應式網頁</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .space-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+
+        .star.small { width: 1px; height: 1px; }
+        .star.medium { width: 2px; height: 2px; }
+        .star.large { width: 3px; height: 3px; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: moveClouds 20s infinite linear;
+        }
+
+        .cloud.c1 { width: 200px; height: 200px; top: 10%; left: -20%; animation-duration: 25s; }
+        .cloud.c2 { width: 300px; height: 300px; bottom: 5%; right: -25%; animation-duration: 30s; }
+        .cloud.c3 { width: 150px; height: 150px; top: 40%; left: -15%; animation-duration: 20s; }
+        .cloud.c4 { width: 250px; height: 250px; bottom: 30%; left: -20%; animation-duration: 35s; }
+
+        @keyframes moveClouds {
+            from { transform: translateX(0); }
+            to { transform: translateX(100vw); }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- 背景特效 -->
+    <div class="space-bg"></div>
+
+    <!-- 導覽列 -->
+    <header class="p-5 flex justify-between items-center fixed top-0 w-full z-20">
+        <a href="#" class="text-xl font-bold font-['Orbitron'] tracking-wider">探索宇宙</a>
+        <nav id="nav-menu" class="hidden md:flex flex-grow justify-end space-x-8 text-lg">
+            <a href="#home" class="hover:text-cyan-400 transition">首頁</a>
+            <a href="#about" class="hover:text-cyan-400 transition">關於我們</a>
+            <a href="#gallery" class="hover:text-cyan-400 transition">畫廊</a>
+            <a href="#contact" class="hover:text-cyan-400 transition">聯絡我們</a>
+        </nav>
+        <div class="md:hidden">
+            <button id="menu-button" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主內容區塊 -->
+    <main class="pt-20">
+        <!-- 英雄區塊 -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center p-4 relative">
+            <div class="relative z-10">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-['Orbitron'] font-bold mb-4 animate-pulse">
+                    超越星辰，探索未知
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                    加入我們的旅程，一同揭開宇宙的奧秘，感受無垠星空的壯麗。
+                </p>
+                <a href="#about" class="inline-block px-8 py-3 text-lg sm:text-xl font-semibold rounded-full glass-effect hover:bg-white hover:text-black transition-all duration-300">
+                    開始探索
+                </a>
+            </div>
+        </section>
+
+        <!-- 關於我們 -->
+        <section id="about" class="p-8 md:p-16">
+            <div class="max-w-4xl mx-auto glass-effect rounded-3xl p-6 sm:p-10 mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-6">關於我們</h2>
+                <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-10">
+                    <div class="w-full md:w-1/2">
+                        <img src="https://placehold.co/600x400/000000/FFFFFF?text=太空探索+隊" alt="太空探索隊" class="rounded-2xl w-full h-auto">
+                    </div>
+                    <div class="w-full md:w-1/2 text-lg leading-relaxed">
+                        <p>
+                            我們是一群熱愛宇宙的探險家，致力於分享最新的太空發現和迷人的天文奇觀。從遙遠的星系到我們身邊的月球，每一處都充滿了值得我們去了解的奧秘。
+                        </p>
+                        <p class="mt-4">
+                            透過這個平台，我們希望能激發更多人對宇宙的熱情，一同探索未知的領域，並慶祝人類在科學上的每一個突破。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 畫廊 -->
+        <section id="gallery" class="p-8 md:p-16">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10">星際畫廊</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 圖片卡片 -->
+                    <div class="glass-effect rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/1e0e47/FFFFFF?text=壯麗+星雲" alt="壯麗星雲" class="w-full h-auto">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">壯麗星雲</h3>
+                            <p class="text-sm opacity-80">宇宙中最絢爛的色彩，是新恆星誕生的搖籃。</p>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/291a58/FFFFFF?text=遙遠+星系" alt="遙遠星系" class="w-full h-auto">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">遙遠星系</h3>
+                            <p class="text-sm opacity-80">每顆星光都承載著數百萬年的旅程，跨越無垠空間。</p>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/312068/FFFFFF?text=行星+軌跡" alt="行星軌跡" class="w-full h-auto">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">行星軌跡</h3>
+                            <p class="text-sm opacity-80">行星在太空中優雅地漫步，遵循著永恆的物理法則。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 聯絡我們 -->
+        <section id="contact" class="p-8 md:p-16">
+            <div class="max-w-xl mx-auto text-center glass-effect rounded-3xl p-6 sm:p-10">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">聯絡我們</h2>
+                <p class="text-lg opacity-90 mb-6">
+                    有任何關於宇宙的疑問或想分享您的發現嗎？隨時與我們聯繫！
+                </p>
+                <form class="space-y-4">
+                    <input type="text" placeholder="您的姓名" class="w-full p-3 rounded-xl bg-transparent glass-effect border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-400 placeholder-white/50">
+                    <input type="email" placeholder="您的電子郵件" class="w-full p-3 rounded-xl bg-transparent glass-effect border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-400 placeholder-white/50">
+                    <textarea placeholder="您的訊息" rows="4" class="w-full p-3 rounded-xl bg-transparent glass-effect border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-400 placeholder-white/50"></textarea>
+                    <button type="submit" class="w-full px-8 py-3 font-semibold rounded-full glass-effect hover:bg-white hover:text-black transition-all duration-300">
+                        發送訊息
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="p-8 text-center glass-effect rounded-t-3xl">
+        <p class="text-sm opacity-80 mb-4">&copy; 2025 探索宇宙。保留所有權利。</p>
+        <!-- 社群媒體按鈕 -->
+        <div class="flex justify-center space-x-6">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.148-4.77-1.691-4.919-4.919-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.204-6.78 2.628-6.983 6.986-.059 1.28-.073 1.688-.073 4.947 0 3.259.014 3.668.072 4.947.204 4.358 2.628 6.78 6.986 6.983 1.28.058 1.688.073 4.947.073s3.668-.014 4.947-.072c4.354-.204 6.78-2.627 6.983-6.986.058-1.28.073-1.688.073-4.947 0-3.259-.014-3.667-.072-4.947-.204-4.359-2.628-6.78-6.986-6.983-1.28-.059-1.688-.073-4.947-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 2c-2.324 0-4.162 1.838-4.162 4.162s1.838 4.162 4.162 4.162 4.162-1.838 4.162-4.162-1.838-4.162-4.162-4.162zm6.758-.163a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.902c0-.528.468-.598 1.246-.598h2.518v-4.24l-3.518-.002c-3.141 0-4.321 1.956-4.321 4.159v2.583z"/>
+                </svg>
+            </a>
+            <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.015c-5.59 0-10.137 4.29-10.137 9.58 0 5.29 4.547 9.58 10.137 9.58 5.59 0 10.138-4.29 10.138-9.58s-4.548-9.58-10.138-9.58zm-1.042 3.868c-.628 0-1.14.536-1.14 1.192 0 .656.512 1.192 1.14 1.192.628 0 1.14-.536 1.14-1.192 0-.656-.512-1.192-1.14-1.192zm3.328 3.016c-.538 0-1.002.39-1.002.87 0 .48.464.87 1.002.87.538 0 1.002-.39 1.002-.87 0-.48-.464-.87-1.002-.87zm-1.042 6.07c-3.763 0-6.815-2.73-6.815-6.095 0-3.365 3.052-6.096 6.815-6.096 3.763 0 6.815 2.73 6.815 6.096 0 3.365-3.052 6.095-6.815 6.095zm1.536-5.836c.628 0 1.14-.536 1.14-1.192s-.512-1.192-1.14-1.192c-.628 0-1.14.536-1.14 1.192s.512 1.192 1.14 1.192zm-3.328 3.016c-.538 0-1.002-.39-1.002-.87 0-.48.464-.87 1.002-.87.538 0 1.002.39 1.002.87 0 .48-.464.87-1.002.87z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic effects -->
+    <script>
+        // 生成背景星星
+        const spaceBg = document.querySelector('.space-bg');
+        const numStars = 100;
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.classList.add(i % 3 === 0 ? 'large' : (i % 2 === 0 ? 'medium' : 'small'));
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            spaceBg.appendChild(star);
+        }
+
+        // 生成背景雲層
+        const numClouds = 4;
+        for (let i = 0; i < numClouds; i++) {
+            const cloud = document.createElement('div');
+            cloud.classList.add('cloud', `c${i+1}`);
+            spaceBg.appendChild(cloud);
+        }
+
+        // 導覽列的JavaScript
+        const menuButton = document.getElementById('menu-button');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('absolute');
+            navMenu.classList.toggle('top-16');
+            navMenu.classList.toggle('left-0');
+            navMenu.classList.toggle('w-full');
+            navMenu.classList.toggle('bg-black');
+            navMenu.classList.toggle('flex-col');
+            navMenu.classList.toggle('items-center');
+            navMenu.classList.toggle('space-y-4');
+            navMenu.classList.toggle('p-4');
+            navMenu.classList.toggle('rounded-b-lg');
+            navMenu.classList.toggle('glass-effect');
+        });
+        
+        // 平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
